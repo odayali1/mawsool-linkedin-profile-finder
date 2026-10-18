@@ -201,11 +201,10 @@ One `profile-lookup` event = one person processed.
 
 | Plan tier | Per lookup | Per 1,000 |
 |-----------|------------|-----------|
-| Free / Starter (Bronze) | $0.001 | **$1.00** |
-| Scale (Silver) | $0.0008 | $0.80 |
-| Business (Gold) | $0.0006 | $0.60 |
-| Platinum | $0.0005 | $0.50 |
-| Diamond / Enterprise | $0.0004 | $0.40 |
+| Free | $0.001 | **$1.00** |
+| Bronze | $0.0009 | $0.90 |
+| Silver | $0.0008 | $0.80 |
+| Gold, Platinum, and Diamond | $0.0004 | $0.40 |
 
 No separate Mawsool subscription required on Apify.
 
