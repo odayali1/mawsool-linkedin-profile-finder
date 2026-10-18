@@ -1,0 +1,40 @@
+{
+  "$schema": "https://apify.com/schemas/v1/actor.ide.json",
+  "actorSpecification": 1,
+  "name": "mawsool-linkedin-profile-finder",
+  "title": "LinkedIn Profile Finder | Name and Company",
+  "description": "LinkedIn profile finder for a person's name and company. Paste names and employers, or upload a CSV, and get the matching LinkedIn profile URL. Exact and confident matches only. Optional job title for a tighter match. Starting from $0.40 per 1,000 lookups. No LinkedIn login and no cookies.",
+  "seoTitle": "LinkedIn Profile Finder by Name, Company",
+  "seoDescription": "LinkedIn profile finder by name and company. Upload a CSV and get the matching LinkedIn URL. Exact matches only. Starting from $0.40 per 1,000 name lookups.",
+  "categories": [
+    "LEAD_GENERATION",
+    "SOCIAL_MEDIA",
+    "AUTOMATION"
+  ],
+  "version": "1.2",
+  "buildTag": "latest",
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 2048,
+  "defaultRunOptions": {
+    "build": "latest",
+    "timeoutSecs": 86400,
+    "memoryMbytes": 512
+  },
+  "environmentVariables": {
+    "MAWSOOL_API_BASE_URL": "https://rev-api.173.212.217.163.sslip.io",
+    "MAWSOOL_API_FALLBACK_BASE_URL": "https://rev-api.mawsool.tech",
+    "MAWSOOL_API_KEY": "@mawsoolApiKeyPrimary",
+    "MAWSOOL_API_FALLBACK_KEY": "@mawsoolApiKey"
+  },
+  "meta": {
+    "templateId": "ts-empty",
+    "generatedBy": "Cursor Agent"
+  },
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  },
+  "pricing": "./pay_per_event.json",
+  "dockerfile": "../Dockerfile"
+}

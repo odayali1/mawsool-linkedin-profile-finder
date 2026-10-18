@@ -1,0 +1,129 @@
+{
+    "actorSpecification": 1,
+    "title": "LinkedIn profiles found",
+    "description": "People lookups from name + company — flat CSV export columns.",
+    "fields": {
+        "type": "object",
+        "properties": {
+            "firstName": { "type": "string", "title": "First name", "example": "Nathan" },
+            "lastName": { "type": "string", "title": "Last name", "example": "Jolly" },
+            "company": { "type": "string", "title": "Company", "example": "4 Pines Brewing Company Pty Ltd" },
+            "jobTitle": { "type": "string", "title": "Job title", "example": "Brand Manager" },
+            "inputLinkedinUrl": { "type": "string", "title": "Input LinkedIn URL" },
+            "hasLinkedIn": { "type": "boolean", "title": "LinkedIn matched", "example": true },
+            "matchType": { "type": "string", "title": "Match type", "description": "exact, confident, likely, or none", "example": "confident" },
+            "matchStrategy": { "type": "string", "title": "Match strategy used", "example": "name_company_job_title" },
+            "profileId": { "type": "string", "title": "Profile ID" },
+            "fullName": { "type": "string", "title": "Full name", "example": "Nathan Jolly" },
+            "headline": { "type": "string", "title": "Headline" },
+            "summary": { "type": "string", "title": "Summary" },
+            "linkedinUrl": { "type": "string", "title": "LinkedIn URL" },
+            "pictureUrl": { "type": "string", "title": "Photo URL" },
+            "matchedCompany": { "type": "string", "title": "Matched company" },
+            "location": { "type": "string", "title": "Location" },
+            "isPublic": { "type": "string", "title": "Is public" },
+            "localeCountry": { "type": "string", "title": "Locale country" },
+            "localeLanguage": { "type": "string", "title": "Locale language" },
+            "educationsCount": { "type": "integer", "title": "Educations count" },
+            "positionsCount": { "type": "integer", "title": "Positions count" },
+            "skillsCount": { "type": "integer", "title": "Skills count" },
+            "skills": { "type": "string", "title": "Skills" },
+            "educationHistory": { "type": "string", "title": "Education history (JSON)" },
+            "positionHistory": { "type": "string", "title": "Position history (JSON)" },
+            "profileRawJson": { "type": "string", "title": "Raw profile JSON" },
+            "profileFlattenedJson": { "type": "string", "title": "Flattened profile JSON" },
+            "checkedAt": { "type": "string", "title": "Checked at" },
+            "success": { "type": "boolean", "title": "Lookup succeeded" },
+            "error": { "type": "string", "title": "Error" },
+            "statusCode": { "type": "integer", "title": "HTTP status" }
+        },
+        "required": ["firstName", "lastName", "company", "hasLinkedIn", "success"]
+    },
+    "views": {
+        "profiles": {
+            "title": "LinkedIn matches",
+            "description": "CRM-ready columns for export.",
+            "transformation": {
+                "fields": [
+                    "firstName",
+                    "lastName",
+                    "company",
+                    "jobTitle",
+                    "hasLinkedIn",
+                    "matchType",
+                    "fullName",
+                    "headline",
+                    "linkedinUrl",
+                    "matchedCompany",
+                    "location",
+                    "checkedAt"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "firstName": { "label": "First name", "format": "text" },
+                    "lastName": { "label": "Last name", "format": "text" },
+                    "company": { "label": "Company", "format": "text" },
+                    "jobTitle": { "label": "Job title", "format": "text" },
+                    "hasLinkedIn": { "label": "Matched", "format": "boolean" },
+                    "matchType": { "label": "Match type", "format": "text" },
+                    "fullName": { "label": "Full name", "format": "text" },
+                    "headline": { "label": "Headline", "format": "text" },
+                    "linkedinUrl": { "label": "LinkedIn URL", "format": "link" },
+                    "matchedCompany": { "label": "Matched company", "format": "text" },
+                    "location": { "label": "Location", "format": "text" },
+                    "checkedAt": { "label": "Checked at", "format": "date" }
+                }
+            }
+        },
+        "full": {
+            "title": "All fields",
+            "description": "Complete export including raw profile JSON and errors.",
+            "transformation": {
+                "fields": [
+                    "firstName",
+                    "lastName",
+                    "company",
+                    "jobTitle",
+                    "inputLinkedinUrl",
+                    "hasLinkedIn",
+                    "matchType",
+                    "matchStrategy",
+                    "profileId",
+                    "fullName",
+                    "headline",
+                    "summary",
+                    "linkedinUrl",
+                    "pictureUrl",
+                    "matchedCompany",
+                    "location",
+                    "isPublic",
+                    "localeCountry",
+                    "localeLanguage",
+                    "educationsCount",
+                    "positionsCount",
+                    "skillsCount",
+                    "skills",
+                    "educationHistory",
+                    "positionHistory",
+                    "profileRawJson",
+                    "profileFlattenedJson",
+                    "checkedAt",
+                    "success",
+                    "error",
+                    "statusCode"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "hasLinkedIn": { "label": "Matched", "format": "boolean" },
+                    "linkedinUrl": { "label": "LinkedIn URL", "format": "link" },
+                    "success": { "label": "Success", "format": "boolean" },
+                    "error": { "label": "Error", "format": "text" }
+                }
+            }
+        }
+    }
+}

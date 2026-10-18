@@ -1,0 +1,136 @@
+{
+  "title": "LinkedIn Profile Finder | Name and Company",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "LinkedIn profile finder for a person's name and company. Paste names and employers, or upload a CSV, and get the matching LinkedIn profile URL. Exact and confident matches only. Optional job title for a tighter match. Starting from $0.40 per 1,000 lookups.",
+  "properties": {
+    "people": {
+      "title": "People to look up",
+      "type": "array",
+      "description": "Add one or more people. Required: First name, Last name, Company. Optional: Job title (helps accuracy) and LinkedIn URL (for exact match).",
+      "editor": "schemaBased",
+      "sectionCaption": "1) Add people",
+      "sectionDescription": "Use this form for a few contacts. For large lists, paste CSV or upload a file below.",
+      "prefill": [
+        {
+          "firstName": "Nathan",
+          "lastName": "Jolly",
+          "company": "4 Pines Brewing Company Pty Ltd",
+          "jobTitle": "Brand Manager",
+          "linkedinUrl": ""
+        }
+      ],
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "title": "First name",
+            "type": "string",
+            "description": "Required.",
+            "editor": "textfield"
+          },
+          "lastName": {
+            "title": "Last name",
+            "type": "string",
+            "description": "Required.",
+            "editor": "textfield"
+          },
+          "company": {
+            "title": "Company",
+            "type": "string",
+            "description": "Employer / company name. Required.",
+            "editor": "textfield"
+          },
+          "jobTitle": {
+            "title": "Job title (optional)",
+            "type": "string",
+            "description": "Improves accuracy when many people share the same name.",
+            "editor": "textfield"
+          },
+          "linkedinUrl": {
+            "title": "LinkedIn URL (optional)",
+            "type": "string",
+            "description": "If you already have linkedin.com/in/... — enables exact URL matching.",
+            "editor": "textfield"
+          }
+        },
+        "required": [
+          "firstName",
+          "lastName",
+          "company"
+        ]
+      }
+    },
+    "peopleCsv": {
+      "title": "Or paste people as CSV (bulk)",
+      "type": "string",
+      "description": "Paste a spreadsheet export. Header row required:\nfirstName,lastName,company,jobTitle,linkedinUrl\n\njobTitle and linkedinUrl are optional columns. Example:\nNathan,Jolly,4 Pines Brewing Company Pty Ltd,Brand Manager,\nJane,Doe,Acme Inc,VP Sales,https://www.linkedin.com/in/janedoe",
+      "editor": "textarea",
+      "prefill": "firstName,lastName,company,jobTitle,linkedinUrl\nNathan,Jolly,4 Pines Brewing Company Pty Ltd,Brand Manager,\nJane,Doe,Acme Inc,VP Sales,"
+    },
+    "peopleFileUrl": {
+      "title": "Or upload a CSV file",
+      "type": "string",
+      "description": "Upload a .csv file with columns: firstName, lastName, company, and optionally jobTitle, linkedinUrl. Same format as the paste field above.",
+      "editor": "fileupload"
+    },
+    "matchStrategy": {
+      "title": "Match strategy",
+      "type": "string",
+      "description": "How to decide which LinkedIn profile is the right person.\n\n• LinkedIn URL (default) — best when the row has a LinkedIn link; exact slug match. If a row has no URL, Mawsool auto-falls back to Name + Company + Job Title.\n• Name + Company + Job Title — best for most sales/recruiting lists without a LinkedIn URL.\n• Name + Company — when you know the employer but not the title.\n• Name + Job Title — when company name is missing or unreliable.\n• Company + Job Title — find people in a role at a company (broader).\n• Name / Company / Job title only — broad search; lower precision; use carefully.",
+      "editor": "select",
+      "sectionCaption": "2) Matching & limits",
+      "sectionDescription": "Choose how strict matching should be. Default is LinkedIn URL (exact when URL is present).",
+      "default": "linkedin_url",
+      "enum": [
+        "linkedin_url",
+        "name_company_job_title",
+        "name_company",
+        "name_job_title",
+        "company_job_title",
+        "name",
+        "company",
+        "job_title"
+      ],
+      "enumTitles": [
+        "LinkedIn URL — exact match (default / recommended when URL exists)",
+        "Name + Company + Job Title — recommended without LinkedIn URL",
+        "Name + Company — employer known, no title",
+        "Name + Job Title — company unknown",
+        "Company + Job Title — role holders at a company",
+        "Name only — broad (lower precision)",
+        "Company only — broad (lower precision)",
+        "Job title only — broad (lower precision)"
+      ]
+    },
+    "maxPeople": {
+      "title": "Max people per run",
+      "type": "integer",
+      "description": "Safety cap for cost control. Default 100. Maximum 100,000. A large list continues if the run stops.",
+      "default": 100,
+      "minimum": 1,
+      "maximum": 100000
+    },
+    "concurrency": {
+      "title": "Concurrent lookups",
+      "type": "integer",
+      "description": "How many people to look up at the same time. Default 10.",
+      "default": 10,
+      "minimum": 1,
+      "maximum": 40
+    },
+    "resumeId": {
+      "title": "Resume ID (optional)",
+      "type": "string",
+      "description": "Reuse this ID to skip people that already succeeded in an earlier run.",
+      "editor": "textfield"
+    },
+    "freshStart": {
+      "title": "Look up finished people again",
+      "type": "boolean",
+      "description": "Turn this on to ignore saved progress and look up the whole list again.",
+      "default": false
+    }
+  }
+}

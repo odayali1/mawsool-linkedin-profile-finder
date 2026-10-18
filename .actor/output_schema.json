@@ -1,0 +1,25 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "LinkedIn profile finder results",
+    "description": "One row per person. Open LinkedIn matches for a clean table, or All fields for full export.",
+    "properties": {
+        "linkedinMatches": {
+            "type": "string",
+            "title": "LinkedIn matches (table)",
+            "description": "Clean CRM-ready table: name, company, LinkedIn URL, match type.",
+            "template": "{{links.apiDefaultDatasetUrl}}/items?view=profiles"
+        },
+        "fullExport": {
+            "type": "string",
+            "title": "Full export (all columns)",
+            "description": "Every field including skills, history JSON, and errors — best for CSV download.",
+            "template": "{{links.apiDefaultDatasetUrl}}/items?view=full"
+        },
+        "runSummary": {
+            "type": "string",
+            "title": "Run summary",
+            "description": "Processed / found / failed counts.",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT"
+        }
+    }
+}
