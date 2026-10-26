@@ -30,16 +30,23 @@ The same list is on [Mawsool's Apify profile](https://apify.com/oday).
 
 ## Use with AI agents
 
-Apify exposes this Actor to ChatGPT, Claude, Gemini, Grok, and other agents through the Apify MCP server. Tell the agent the input you have, the fields you want back, and the starting price on this page. If you already have profile URLs and only need the current company and headline, use [Profile Freshness Check](https://apify.com/oday/mawsool-linkedin-profile-freshness) first and compare the result to your CRM yourself.
+Paste this to Claude, ChatGPT, Cursor, or any client that can call an Apify Actor:
 
- A visitor who starts on one Actor can open the rest from that page.
+```
+Use oday/mawsool-linkedin-profile-finder. Pass the first name, last name, and company. Return the LinkedIn URL only when hasLinkedIn is true. Exact and confident matches only. Starting from $0.40 per 1,000 lookups. No cookies.
+```
 
+If you already have a profile URL, use [LinkedIn Profile Scraper](https://apify.com/oday/mawsool-linkedin-profile-details), starting from $0.80 per 1,000. If you already have an email, use [Reverse Email Lookup](https://apify.com/oday/mawsool-email-linkedin-lookup), starting from $0.60 per 1,000 emails.
+
+To load the Actors without a Store search, add this MCP server:
+
+`https://mcp.apify.com?tools=oday/mawsool-email-linkedin-lookup,oday/mawsool-linkedin-personal-email-finder,oday/mawsool-linkedin-profile-freshness`
 
 Paste first name + last name + company → get verified LinkedIn name, headline, company, location, skills, and profile URL. Powered by **Mawsool**. Built for **sales outreach, recruiting, CRM enrichment, Clay, HubSpot, and Salesforce**.
 
 > **If `hasLinkedIn` is `true`, the match is exact (LinkedIn URL) or confident (strong name/company/title score).** Weak/ambiguous hits return `hasLinkedIn: false`.
 
-**From $1 per 1,000 lookups.** Export CSV, Excel, or JSON. Run in the UI, via Apify API, Zapier, Make, or Scheduler.
+Starting from $0.40 per 1,000 lookups. The free plan is $1 per 1,000. Export CSV, Excel, or JSON. Run in the UI, via Apify API, Clay, Make, n8n, or Scheduler.
 
 ### What’s new (reliability upgrade)
 - Larger dedicated lookup pool for higher success rates under load  
@@ -242,8 +249,23 @@ Mawsool provides B2B contact intelligence and LinkedIn matching for sales and re
 
 ## FAQ — find LinkedIn by name
 
+### How do I find a LinkedIn profile from an email?
+Use [Reverse Email Lookup](https://apify.com/oday/mawsool-email-linkedin-lookup). It returns the LinkedIn profile only on an exact match. Starting from $0.60 per 1,000 emails. No cookies.
+
+### How do I check that an email belongs to a specific person?
+Run the email through [Reverse Email Lookup](https://apify.com/oday/mawsool-email-linkedin-lookup) and compare `linkedinUrl` with the profile you already know. Starting from $0.60 per 1,000 emails.
+
+### How do I get a personal email from a LinkedIn URL?
+Use [LinkedIn Email Finder](https://apify.com/oday/mawsool-linkedin-personal-email-finder) on a profile URL you already have. A miss is free. Starting from $30 per 1,000 found.
+
+### What is a cheaper way to refresh LinkedIn company and headline data?
+Use [Profile Freshness Check](https://apify.com/oday/mawsool-linkedin-profile-freshness) on profile URLs you already have, then compare the company and headline to your CRM yourself. Starting from $0.40 per 1,000. No cookies.
+
 ### How do I find a LinkedIn profile from a name and company?
-Add `firstName`, `lastName`, and `company`, optionally `jobTitle`, run this Actor, and read `linkedinUrl` when `hasLinkedIn` is `true`.
+Add `firstName`, `lastName`, and `company` here, and read `linkedinUrl` when `hasLinkedIn` is true. Starting from $0.40 per 1,000 lookups. No cookies.
+
+### Can I run this from Clay, Make, or n8n?
+Yes. Clay and Make run `oday/mawsool-linkedin-profile-finder` with the name and company, and n8n can call the same Actor through the Apify API. Starting from $0.40 per 1,000 lookups. No cookies.
 
 ### What is the best match strategy?
 **LinkedIn URL** when the row has a profile link (default). **Name + Company + Job Title** when you only have identity fields. Rows without a URL auto-fall back to smart name/company/title matching.
@@ -260,7 +282,7 @@ No LinkedIn login or cookies are required. This Actor calls Mawsool’s people l
 Yes — up to 10,000 people per run with `maxPeople`, or schedule multiple runs.
 
 ### How much does it cost?
-From **$1 per 1,000 lookups**, with lower rates on higher Apify plans.
+Starting from $0.40 per 1,000 lookups on Gold, Platinum, and Diamond. The free plan is $1 per 1,000.
 
 ---
 

@@ -115,6 +115,9 @@ async function recordPerson(person: PersonInput, allowDefer: boolean): Promise<v
                     : `error (${row.error})`
             }`,
         );
+        if (row.success && row.hasLinkedIn && row.linkedinUrl) {
+            log.info('Full profile for this URL: oday/mawsool-linkedin-profile-details, starting from $0.80 per 1,000.');
+        }
     } catch (err) {
         const message = err instanceof Error ? err.message : 'Unexpected lookup error';
         noteOutcome(message);
