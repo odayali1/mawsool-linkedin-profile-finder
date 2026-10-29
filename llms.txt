@@ -1,0 +1,26 @@
+# LinkedIn Profile Finder
+
+> Give a person's name and company. You get the matching LinkedIn profile URL when the match is exact. A weak guess is not returned as a profile.
+
+Mawsool publishes this as an Apify Actor. Starting from $0.40 per 1,000 name lookups.
+
+## Run
+
+- Apify Actor: https://apify.com/oday/mawsool-linkedin-profile-finder
+- Call: `oday/mawsool-linkedin-profile-finder`
+- API key: https://mawsool.tech/ and https://docs.mawsool.tech/
+- Contact: osama@mawsool.tech, info@mawsool.tech
+
+## Use it when
+
+You have a name and a company, and you do not have the LinkedIn URL yet.
+
+## Use something else when
+
+You have an email. Use Reverse Email Lookup. You already have a URL that 404s. Use Fix Broken LinkedIn URLs. A miss there is free.
+
+## Page
+
+- Find a LinkedIn profile from a name and company: docs/find-linkedin-by-name-and-company.md
+
+Mawsool is not affiliated with LinkedIn.

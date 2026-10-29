@@ -5,6 +5,7 @@
 
 | If this is what you need | Open |
 | --- | --- |
+| Your LinkedIn URLs are old, stale, or no longer open. | [Fix Broken LinkedIn URLs](https://apify.com/oday/mawsool-fix-broken-linkedin-urls) |
 | You have an email and want the LinkedIn profile. | [Reverse Email Lookup](https://apify.com/oday/mawsool-email-linkedin-lookup) |
 | You have a profile URL and want the personal email. | [LinkedIn Email Finder](https://apify.com/oday/mawsool-linkedin-personal-email-finder) |
 | You only need the current employer, before paying for a full profile. | [Current Company Checker](https://apify.com/oday/mawsool-linkedin-company-checker) |
@@ -40,7 +41,7 @@ If you already have a profile URL, use [LinkedIn Profile Scraper](https://apify.
 
 To load the Actors without a Store search, add this MCP server:
 
-`https://mcp.apify.com?tools=oday/mawsool-email-linkedin-lookup,oday/mawsool-linkedin-personal-email-finder,oday/mawsool-linkedin-profile-freshness`
+`https://mcp.apify.com?tools=oday/mawsool-fix-broken-linkedin-urls,oday/mawsool-email-linkedin-lookup,oday/mawsool-linkedin-personal-email-finder,oday/mawsool-linkedin-profile-freshness`
 
 Paste first name + last name + company → get verified LinkedIn name, headline, company, location, skills, and profile URL. Powered by **Mawsool**. Built for **sales outreach, recruiting, CRM enrichment, Clay, HubSpot, and Salesforce**.
 
